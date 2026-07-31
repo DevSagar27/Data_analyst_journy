@@ -1,0 +1,52 @@
+The example uses a WHERE clause to show the population of 'France'. Note that strings should be in 'single quotes'
+
+* Modify it to show the population of Germany
+Use = for an exact match with one specific value.Use 
+IN to match against a list of multiple potential values.
+Use LIKE for pattern matching using wildcards (partial text searches)
+
+select population from world where name like 'germany';
+select population from world where  name  = 'germany';
+
+
+* Show the name and the population for 'Sweden', 'Norway' and 'Denmark'.
+select name,population from world where name IN ('Sweden','Norway','Denmark');
+
+* Which countries are not too small and not too big? BETWEEN allows range checking (range specified is inclusive of boundary values). The example below shows countries with an area of 250,000-300,000 sq. km. Modify it to show the country and the area for countries with an area between 200,000 and 250,000.
+select name , area from world where area between 200000 and 250000;
+
+*Show the name for the countries that have a population of at least 200 million.
+SELECT name FROM world WHERE population > 200000000
+
+*Give the name and the per capita GDP for those countries with a population of at least 200 million.
+gdp  = gpd/population
+select name, gdp/population as per_capita_gdp from world where population > 200000000
+
+*Show the name and population in millions for the countries of the continent 'South America'. 
+find in millions population/1000000
+select name , population/1000000 from world where continent like 'South America'
+
+*Show the name and population for France, Germany, Italy
+select name , population from world where name in ('France', 'Germany', 'Italy')
+
+*Show the countries which have a name that includes the word 'United'
+select name from world where name like'%united%'
+
+*Show the countries that are big by area or big by population. Show name, population and area.
+select name, population, area from world where 
+area > 3000000  or population > 250000000
+
+*Exclusive OR (XOR). Show the countries that are big by area (more than 3 million) or big by population (more than 250 million) but not both. Show name, population and area.
+SELECT name, population, area
+FROM world
+where(population <= 250000000 and  area > 3000000)
+or (population > 250000000 and area <= 3000000)
+
+*Show the name and population in millions and the GDP in billions for the countries of the continent 'South America'. Use the ROUND function to show the values to two decimal places.
+select name,round(population/1000000.0 ,2) as population , round(gdp/1000000000.0, 2)as gdp from world where continent = 'South America'
+
+
+
+
+
+
