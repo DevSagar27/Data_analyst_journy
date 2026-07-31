@@ -1,0 +1,40 @@
+-- where caluse is used to help  filter  our record or rows of data  
+-- we are going to retun rows that fullfill a specific condition
+select * where first_name = 'leslie';
+-- compariosion operators > , <, ,<= , >=
+select * from employee_salary where salary > 50000;
+select * from employee_salary where salary >= 50000;
+select * from employee_salary where salary < 50000;
+select * from employee_salary where salary <= 50000;
+
+-- equal to not equal to
+select * from employee_demographics where gender = 'female';
+select * from employee_demographics where gender != 'female';
+
+-- date 
+select * from employee_demographics where birth_date > '1962-08-28';
+
+-- AND OR NOT LOGICAL OPERATORS
+select * from employee_demographics 
+where birth_date > '1985-08-28'
+AND gender = 'male';
+
+ select * from employee_demographics where 
+ birth_date < '1985-01-01'
+ OR gender  = 'male';
+
+select * from employee_demographics
+where birth_date > '1985-01-01'
+OR NOT gender = 'male';
+
+select * from employee_demographics where  first_name = 'Leslie' and age = 44;
+select * from employee_demographics where  (first_name = 'Leslie' and age = 44) or age > 44;
+
+-- like statement we can look for specific patterns
+select * from employee_demographics where first_name like 'jer';
+select * from employee_demographics where first_name like '%jer%';-- putting % sign after any word or character means looking anything after that  and adding before means   	
+select * from employee_demographics where first_name like '%a%';
+select * from employee_demographics where first_name like 'a__';
+select * from employee_demographics where first_name like 'a___';
+select * from employee_demographics where first_name like 'a___%';
+select * from employee_demographics where birth_date like '19 89%'
