@@ -48,8 +48,18 @@ select * from employee_demographics order by first_name desc;
 SELECT * from employee_demographics order by age, gender;	
 select distinct gender from employee_demographics ;
 -- diffn between where and having
+-- two filters where- row level having - aggrigate level
 SELECT occupation, avg(salary) from employee_salary
-group by occupation 
+where occupation like '%manager%'
+group by occupation
+having avg(salary) > 75000;
+-- limit and aliasing
+select * from employee_demographics  limit 3;
+select * from employee_demographics order by age desc limit 3;
+select gender ,avg(age) as age from
+employee_demographics group by gender 
+having avg(age) > 40;
+ 
  
 
 
