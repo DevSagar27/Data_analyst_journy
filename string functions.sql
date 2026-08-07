@@ -19,8 +19,25 @@ SELECT first_name, LEFT(first_name, 4),
 RIGHT(first_name,4),
 substring(first_name,4,2),
 birth_date,
-substring(birth_date, 6,2) from employee_demographics;
+substring(birth_date, 6,2) as birth_month from employee_demographics;
 
+-- replce
+select first_name, replace(first_name , 'a','z')
+from employee_demographics;
+ -- LOCATE
+ 
+ SELECT LOCATE(x, aexander);
+ 
+ select first_name , locate('an', first_name)
+ from employee_demographics;
+ 
+ -- CONCAT
+ select first_name,last_name,
+ CONCAT(first_name, last_name)
+ from employee_demographics;
+ 
+ 
+ 
 
 
 
